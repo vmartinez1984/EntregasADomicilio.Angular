@@ -1,0 +1,49 @@
+<div class="container">
+    <h2>Platillos</h2>
+
+    <mat-form-field>
+        <mat-label>Categorias</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{categoria.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="row">
+        <div *ngFor="let platillo of platillos" class="col-md-6 mt-2">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        {{platillo.nombre}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <img [src]="obtenerUrl(platillo.id)" height="150px" />
+                        </div>
+                        <div class="col">
+                            <p>{{platillo.descripcion}}</p>
+                        </div>
+
+                        <div class="col">
+                            <app-autorizado>
+                                <ng-container autorizado>
+                                    <button mat-button color="primary" (click)="agregarACarrito(platillo)">
+                                        Agregar
+                                    </button>
+                                </ng-container>
+                            </app-autorizado>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <div>{{platillo.precio | currency}} </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
