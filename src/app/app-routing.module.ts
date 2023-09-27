@@ -4,13 +4,17 @@ import { ListaDePlatillosComponent } from './components/platillos/lista-de-plati
 import { AgregarClienteComponent } from './components/clientes/agregar-cliente/agregar-cliente.component';
 import { LoginComponent } from './components/clientes/login/login.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cliente/detalle-del-cliente.component';
+import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/lista-de-pedidos.component';
 
 const routes: Routes = [
   //{ path: "", component: ListaDePlatillosComponent }
-  { path: "", component: ListaDePlatillosComponent},
-  //{ path: "", component: AgregarClienteComponent },
+  { path: "", component: ListaDePlatillosComponent },
   { path: "iniciarSesion", component: LoginComponent },
-  { path: "carrito", component: CarritoComponent}
+  { path: "carrito", component: CarritoComponent },
+  { path: "cliente/detalles", component: DetalleDelClienteComponent },
+  { path: "cliente/pedidos", component: ListaDePedidosComponent },
+  { path: "cliente/registrar", component: AgregarClienteComponent },
 ];
 
 @NgModule({

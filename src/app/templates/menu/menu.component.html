@@ -7,19 +7,20 @@
 
     <app-autorizado>
         <ng-container autorizado>
-            <button mat-button routerLink="carrito" color="link" matBadge="8" matBadgeColor="accent">
+            <button mat-button routerLink="carrito" color="link" matBadge="{{servicio.carrito.platillos.length}}" matBadgeColor="accent">
                 <mat-icon>shopping_cart</mat-icon>
                 Carrito
             </button>
 
             <button mat-button [matMenuTriggerFor]="menu">
                 <mat-icon>person</mat-icon>
-                {{inicioDeSesion.cliente.obtenerCampo("Nombre")}}
+                {{servicio.sesion.obtenerCampo("Nombre")}}
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="inicioDeSesion.cliente.cerrarSesion()"><mat-icon>logout</mat-icon> Cerrar
+                <button mat-menu-item (click)="servicio.sesion.cerrarSesion()"><mat-icon>logout</mat-icon> Cerrar
                     sesión</button>
-                <button mat-menu-item><mat-icon>manage_accounts</mat-icon>Ver cuenta</button>
+                <button mat-menu-item routerLink="/cliente/detalles"><mat-icon>manage_accounts</mat-icon>Ver cuenta</button>
+                <button mat-menu-item routerLink="/cliente/pedidos"><mat-icon>list</mat-icon>Ver Pedidos</button>
             </mat-menu>
 
         </ng-container>
@@ -28,8 +29,9 @@
                 <mat-icon>login</mat-icon>
                 Iniciar sesion
             </a>
-            <a mat-button routerLink="registro">
+            <a mat-button routerLink="cliente/registrar">
                 <mat-icon>app_registration</mat-icon>
+                Registrarse
             </a>
         </ng-container>
     </app-autorizado>

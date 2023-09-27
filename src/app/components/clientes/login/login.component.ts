@@ -38,8 +38,8 @@ export class LoginComponent {
         console.log(data)
         this.estaCargando = false
         //this.habilitarFormulario(true)
-        this.servicio.cliente.guardarToken(data)
-        this.snackbar.open("Bienvenido "+ this.servicio.cliente.obtenerCampo("Nombre"), "Ok", {duration: 5000})
+        this.servicio.sesion.guardarToken(data)
+        this.snackbar.open("Bienvenido "+ this.servicio.sesion.obtenerCampo("Nombre"), "Ok", {duration: 5000})
         this.router.navigate(['/'])
       }, error:(data)=>{
         //console.log(data.error.mensaje)

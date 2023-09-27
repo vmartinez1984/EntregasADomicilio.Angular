@@ -9,7 +9,7 @@ import { TokenDto } from '../interfaces/token-dto';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class SesionService {
   private readonly llaveToken = 'token'
   private readonly llaveExpiracion = 'expiracion'
 
@@ -28,13 +28,7 @@ export class ClienteService {
     return true
   }
 
-  iniciarSesion(inicioDeSesion: InicioDesesionDto):Observable<TokenDto> {
-    return this.httpCliente.post<TokenDto>(this.url + "InicioDesesion",inicioDeSesion)
-  }
 
-  agregar(cliente: ClienteDto): Observable<any>{
-    return this.httpCliente.post(this.url, cliente)
-  }
 
   guardarToken(respuesta: TokenDto) {
     localStorage.setItem(this.llaveExpiracion, respuesta.expiracion.toString())
@@ -61,9 +55,23 @@ export class ClienteService {
   cerrarSesion() {
     localStorage.removeItem(this.llaveExpiracion)
     localStorage.removeItem(this.llaveToken)
-  }
+  } 
+}
 
+export class ClienteService{
   constructor(private httpCliente: HttpClient) { }
 
   private url= environment.urlEntregasADomcilioApi + "Clientes/"
+
+  agregar(cliente: ClienteDto): Observable<any>{
+    return this.httpCliente.post(this.url, cliente)
+  }
+
+  iniciarSesion(inicioDeSesion: InicioDesesionDto):Observable<TokenDto> {
+    return this.httpCliente.post<TokenDto>(this.url + "InicioDesesion",inicioDeSesion)
+  }
+
+  obtenerCliente(): Observable<any>{
+    return this.httpCliente.get(this.url)
+  }
 }

@@ -11,6 +11,6 @@ export class AutorizadoComponent {
   constructor(private seguridad: RespositorioService){}
 
   estaAutorizado (): boolean{
-    return this.seguridad.cliente.estaLogueado()
+    return this.seguridad.sesion.estaLogueado()
   }
 }

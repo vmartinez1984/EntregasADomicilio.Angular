@@ -19,6 +19,9 @@ import { InterceptorService } from './services/interceptor.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AutorizadoComponent } from './components/seguridad/autorizado/autorizado.component';
 import { AgregarPlatilloACarritoComponent } from './components/platillos/agregar-platillo-acarrito/agregar-platillo-acarrito.component';
+import { DetalleDelUltimoPedidoComponent } from './components/Pedido/detalle-del-ultimo-pedido/detalle-del-ultimo-pedido.component';
+import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/lista-de-pedidos.component';
+import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cliente/detalle-del-cliente.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { AgregarPlatilloACarritoComponent } from './components/platillos/agregar
     FooterComponent,
     AutorizadoComponent,
     AgregarPlatilloACarritoComponent,
+    DetalleDelUltimoPedidoComponent,
+    ListaDePedidosComponent,
+    DetalleDelClienteComponent,
   ],
   imports: [
     BrowserModule,

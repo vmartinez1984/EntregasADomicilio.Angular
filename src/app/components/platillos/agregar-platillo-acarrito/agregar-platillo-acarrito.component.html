@@ -9,21 +9,36 @@
             </div>
             <div class="col">
                 <p>{{platillo.descripcion}}</p>
+                <p>{{platillo.precio | currency}}</p>
             </div>           
         </div>
         <div class="row">
-            <div class="col">
-                <button mat-fab color="primary" (click)="agregar()">
-                    <mat-icon>add</mat-icon>
-                </button>
+            <div class="col m-1">
+                <div class="text-left">
+                    <button mat-fab color="primary" (click)="agregar(platillo)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
             </div>
             <div class="col">
-                <h1>{{numero}}</h1>
+                <h1 class="text-center">{{servicio.carrito.obtenerNumeroDePlatillos(platillo.id)}}</h1>
+                <h1 class="text-center">{{servicio.carrito.obtenerSubtotal(platillo.id) | currency}}</h1>
+                
+                <div class="text-center">
+                    <button mat-button routerLink="carrito" color="link" matBadge="{{servicio.carrito.platillos.length}}" matBadgeColor="accent">
+                        <mat-icon>shopping_cart</mat-icon>
+                        Carrito
+                        {{servicio.carrito.obtenerTotal() | currency}}
+                    </button>
+                </div>
+                
             </div>
             <div class="col">
-                <button mat-fab color="warn" (click)="quitar()">
-                    <mat-icon>remove</mat-icon>
-                </button>
+                <div class="text-right">
+                    <button mat-fab color="warn" (click)="servicio.carrito.quitarPlatillo(platillo)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </mat-card-content>

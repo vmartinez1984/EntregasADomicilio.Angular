@@ -7,5 +7,5 @@ import { RespositorioService } from 'src/app/services/respositorio.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  constructor(public inicioDeSesion: RespositorioService){}
+  constructor(public servicio: RespositorioService){}
 }

@@ -11,7 +11,7 @@ export class InterceptorService implements HttpInterceptor{
   constructor(private servicio: RespositorioService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.servicio.cliente.obtenerToken()
+    const token = this.servicio.sesion.obtenerToken()
     if (token) {
       req = req.clone({
         setHeaders: { Authorization: `Bearer ${token}` }

@@ -1,1 +1,63 @@
-<p>carrito works!</p>
+<div class="container">
+
+    <h2>Carrito</h2>
+
+    <div class="row">
+        <div *ngFor="let platillo of servicio.carrito.platillos" class="col-md-6 mt-2">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        {{platillo.nombre}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <img [src]="obtenerUrl(platillo.id)" height="150px" />
+                        </div>
+                        <div class="col">
+                            <p>{{platillo.descripcion}}</p>
+                        </div>
+
+                        <div class="col">
+                            <app-autorizado>
+                                <ng-container autorizado>
+                                    <button mat-button color="primary"
+                                        (click)="servicio.carrito.quitarPlatillo(platillo)">
+                                        Quitar
+                                    </button>
+                                </ng-container>
+                            </app-autorizado>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <div>{{platillo.precio | currency}} </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row mt-3">        
+        <div class="col">
+            <p>
+                Total: {{servicio.carrito.obtenerTotal() | currency}}
+            </p>
+
+            <form (submit)="realizarPedido()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Agregar nota</mat-label>
+                    <input [(ngModel)]="nota" matInput type="text" maxlength="255" autocomplete="off" name="nota" />                    
+                </mat-form-field>
+
+                <button mat-button color="primary" type="submit">
+                    Realizar pedido
+                </button>
+                <button mat-button color="warn" type="button" (click)="servicio.carrito.vaciarCarrito()" [disabled]="servicio.carrito.platillos.length == 0">
+                    Vaciar carrito
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
