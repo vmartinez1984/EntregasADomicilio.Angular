@@ -1,80 +1,117 @@
 <form [formGroup]="formGroup" (submit)="guardar()">
-    <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input formControlName="nombre" matInput type="text" autocomplete="off" />
-        <mat-error>El campo Nombre es requerido</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Apellidos</mat-label>
-        <input formControlName="apellidos" matInput type="text" autocomplete="off" />
-        <mat-error>El campo Apellidos es requerido</mat-error>
-    </mat-form-field>
+    <h2>Datos personales</h2>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput type="text" autocomplete="off" />
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input formControlName="apellidos" matInput type="text" autocomplete="off" />
+                <mat-error>El campo Apellidos es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field>
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaDeNacimiento">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <div class="row">
+        <div class="col">
+            <mat-form-field>
+                <mat-label>Fecha de nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaDeNacimiento">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Telefono</mat-label>
+                <input formControlName="telefono" matInput type="text" maxlength="10" autocomplete="off" />
+                <mat-error>El campo Telefono es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Telefono</mat-label>
-        <input formControlName="telefono" matInput type="text" maxlength="10" autocomplete="off" />
-        <mat-error>El campo Telefono es requerido</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Correo</mat-label>
-        <input formControlName="correo" matInput type="text" autocomplete="off" />
-        <mat-error>El campo Apellidos es requerido</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Contraseña</mat-label>
-        <input formControlName="contrasenia" matInput type="Contraseña" type="password" autocomplete="off" />
-        <mat-error>El campo Contraseña es requerido</mat-error>
-    </mat-form-field>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input formControlName="correo" matInput type="text" autocomplete="off" />
+                <mat-error>El campo Apellidos es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="contrasenia" matInput type="Contraseña" type="password" autocomplete="off" />
+                <mat-error>El campo Contraseña es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
 
-    <hr />
-    <mat-form-field appearance="outline">
-        <mat-label>Calle y numero</mat-label>
-        <input formControlName="calleYNumero" matInput type="text" autocomplete="off" />
-        <mat-error>El campo Apellidos es requerido</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Referencias</mat-label>
-        <input formControlName="referencias" matInput type="text" autocomplete="off" maxlength="250" />
-        <mat-error>El campo referencias es requerido</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Codigo postal</mat-label>
-        <input formControlName="codigoPostal" matInput type="text" maxlength="5" (keyup)="buscarCodigoPostal($event)" />
-        <mat-error>El campo Codigo Postal es requerido</mat-error>
-        <mat-progress-bar mode="indeterminate" *ngIf="estaBuscandoCodigoPostal"></mat-progress-bar>
-    </mat-form-field>
+    <h2>Dirección</h2>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Calle y numero</mat-label>
+                <input formControlName="calleYNumero" matInput type="text" autocomplete="off" />
+                <mat-error>El campo Apellidos es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Referencias</mat-label>
+                <input formControlName="referencias" matInput type="text" autocomplete="off" maxlength="250" />
+                <mat-error>El campo referencias es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Alcaldia</mat-label>
-        <input formControlName="alcaldia" matInput autocomplete="off" />
-    </mat-form-field>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Codigo postal</mat-label>
+                <input formControlName="codigoPostal" matInput type="text" maxlength="5"
+                    (keyup)="buscarCodigoPostal($event)" />
+                <mat-error>El campo Codigo Postal es requerido</mat-error>
+                <mat-progress-bar mode="indeterminate" *ngIf="estaBuscandoCodigoPostal"></mat-progress-bar>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Alcaldia</mat-label>
+                <input formControlName="alcaldia" matInput autocomplete="off" />
+            </mat-form-field>
+        </div>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Colonia</mat-label>
-        <mat-select formControlName="colonia">
-            <ng-container *ngIf="codigosPostales.length == 1">
-                <mat-option  [value]="codigosPostales[0]" selected>
-                    {{codigosPostales[0].tipoDeAsentamiento}} {{codigosPostales[0].asentamiento}}
-                </mat-option>
-            </ng-container>
-            <ng-container *ngIf="codigosPostales.length > 1">
-                <mat-option *ngFor="let codigoPostal of codigosPostales" [value]="codigoPostal">
-                    {{codigoPostal.tipoDeAsentamiento}} {{codigoPostal.asentamiento}}
-                </mat-option>
-            </ng-container>
-        </mat-select>
-        <mat-error>El campo Colonia es requerido</mat-error>
-    </mat-form-field>
-
-    <button mat-flat-button color="primary" type="submit">
-        Guardar
-    </button>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Colonia</mat-label>
+                <mat-select formControlName="colonia">
+                    <ng-container *ngIf="codigosPostales.length == 1">
+                        <mat-option [value]="codigosPostales[0]" selected>
+                            {{codigosPostales[0].tipoDeAsentamiento}} {{codigosPostales[0].asentamiento}}
+                        </mat-option>
+                    </ng-container>
+                    <ng-container *ngIf="codigosPostales.length > 1">
+                        <mat-option *ngFor="let codigoPostal of codigosPostales" [value]="codigoPostal">
+                            {{codigoPostal.tipoDeAsentamiento}} {{codigoPostal.asentamiento}}
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-error>El campo Colonia es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <button mat-flat-button color="primary" type="submit" style="width: 90%;">
+                Guardar
+            </button>
+        </div>
+    </div>
 </form>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PedidoVentaDto } from 'src/app/interfaces/pedido-venta-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
 
 @Component({
@@ -7,7 +8,15 @@ import { RespositorioService } from 'src/app/services/respositorio.service';
   styleUrls: ['./lista-de-pedidos.component.css']
 })
 export class ListaDePedidosComponent {
+  pedidos: PedidoVentaDto[]=[]
+
   constructor(private servicio: RespositorioService){
-    this.servicio.pedido.obtenerTodosLosPedidos().subscribe({next: (data)=>console.log(data)})
+    this.servicio.pedido.obtenerTodosLosPedidos().subscribe(
+      {
+        next: (pedidos)=>{
+          this.pedidos = pedidos
+        }
+      }
+    )
   }
 }

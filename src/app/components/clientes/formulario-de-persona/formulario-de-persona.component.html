@@ -1,0 +1,32 @@
+<form>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput type="text" autocomplete="off" />
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input formControlName="apellidos" matInput type="text" autocomplete="off" />
+                <mat-error>El campo Apellidos es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaDeNacimiento">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Telefono</mat-label>
+        <input formControlName="telefono" matInput type="text" maxlength="10" autocomplete="off" />
+        <mat-error>El campo Telefono es requerido</mat-error>
+    </mat-form-field>
+</form>

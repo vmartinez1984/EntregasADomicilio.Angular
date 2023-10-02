@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PedidoVentaDto, PlatilloPedidoDto } from '../interfaces/pedido-venta-dto';
+import { PedidoVentaDtoIn, PlatilloPedidoDto } from '../interfaces/pedido-venta-dto';
 import { environment } from 'src/environments/environment.development';
 import { PlatilloVentaDto } from '../interfaces/platillo-dto';
 
@@ -11,7 +11,7 @@ import { PlatilloVentaDto } from '../interfaces/platillo-dto';
 export class PedidoService {
 
   realizarPedido(nota: string, platillos: PlatilloVentaDto[]): Observable<any> {
-    var pedido: PedidoVentaDto = {
+    var pedido: PedidoVentaDtoIn = {
       comentario: nota,
       listaDetalleDelPedido: this.obtenerListaDetalleDelPedido(platillos)
     }

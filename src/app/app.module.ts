@@ -22,6 +22,8 @@ import { AgregarPlatilloACarritoComponent } from './components/platillos/agregar
 import { DetalleDelUltimoPedidoComponent } from './components/Pedido/detalle-del-ultimo-pedido/detalle-del-ultimo-pedido.component';
 import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/lista-de-pedidos.component';
 import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cliente/detalle-del-cliente.component';
+import { FormularioDePersonaComponent } from './components/clientes/formulario-de-persona/formulario-de-persona.component';
+import { FormularioDeDireccionComponent } from './components/clientes/formulario-de-direccion/formulario-de-direccion.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cl
     DetalleDelUltimoPedidoComponent,
     ListaDePedidosComponent,
     DetalleDelClienteComponent,
+    FormularioDePersonaComponent,
+    FormularioDeDireccionComponent,
   ],
   imports: [
     BrowserModule,
