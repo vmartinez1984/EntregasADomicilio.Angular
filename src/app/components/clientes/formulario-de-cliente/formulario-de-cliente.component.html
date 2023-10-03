@@ -1,57 +1,4 @@
-<form [formGroup]="formGroup" (submit)="guardar()">
-    <h2>Datos personales</h2>
-    <div class="row">
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Nombre</mat-label>
-                <input formControlName="nombre" matInput type="text" autocomplete="off" />
-                <mat-error>El campo Nombre es requerido</mat-error>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Apellidos</mat-label>
-                <input formControlName="apellidos" matInput type="text" autocomplete="off" />
-                <mat-error>El campo Apellidos es requerido</mat-error>
-            </mat-form-field>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <mat-form-field>
-                <mat-label>Fecha de nacimiento</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="fechaDeNacimiento">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Telefono</mat-label>
-                <input formControlName="telefono" matInput type="text" maxlength="10" autocomplete="off" />
-                <mat-error>El campo Telefono es requerido</mat-error>
-            </mat-form-field>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Correo</mat-label>
-                <input formControlName="correo" matInput type="text" autocomplete="off" />
-                <mat-error>El campo Apellidos es requerido</mat-error>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Contraseña</mat-label>
-                <input formControlName="contrasenia" matInput type="Contraseña" type="password" autocomplete="off" />
-                <mat-error>El campo Contraseña es requerido</mat-error>
-            </mat-form-field>
-        </div>
-    </div>
+<!-- <form>
 
     <h2>Dirección</h2>
     <div class="row">
@@ -114,4 +61,164 @@
             </button>
         </div>
     </div>
-</form>
+</form> -->
+
+
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row g-0">
+        <div class="col-md-12 bg-dark d-flex align-items-center">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal">Registrar</h5>
+                <h1 class="text-white mb-4">Anote sus datos</h1>
+
+                <form [formGroup]="formGroup" (submit)="guardar()">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre"
+                                    maxlength="50" autocomplete="off">
+                                <label>Nombre</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['nombre'].invalid && (formGroup.controls['nombre'].dirty || formGroup.controls['nombre'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['nombre'].errors">
+                                    El nombre es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="apellidos"
+                                    placeholder="Apellidos" maxlength="140" autocomplete="off">
+                                <label for="name">Apellidos</label>
+                                <div *ngIf="formGroup.controls['apellidos'].invalid && (formGroup.controls['apellidos'].dirty || formGroup.controls['apellidos'].touched)"
+                                    class="alert">
+                                    <div *ngIf="formGroup.controls['apellidos'].errors">
+                                        Los apellidos son obligatorios
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" placeholder="Correo" formControlName="correo">
+                                <label>Correo</label>
+                                <div *ngIf="formGroup.controls['correo'].invalid && (formGroup.controls['correo'].dirty || formGroup.controls['correo'].touched)"
+                                    class="alert">
+                                    <div *ngIf="formGroup.controls['correo'].errors">
+                                        El correo es obligatorio
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" placeholder="Contraseña"
+                                    formControlName="contrasenia">
+                                <label for="email">Contraseña</label>
+                                <div *ngIf="formGroup.controls['contrasenia'].invalid && (formGroup.controls['contrasenia'].dirty || formGroup.controls['contrasenia'].touched)"
+                                    class="alert">
+                                    <div *ngIf="formGroup.controls['contrasenia'].errors">
+                                        El correo es obligatorio
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="date" class="form-control" placeholder="Fecha de nacimiento"
+                                    formControlName="fechaDeNacimiento">
+                                <label>Fecha de nacimiento</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['fechaDeNacimiento'].invalid && (formGroup.controls['fechaDeNacimiento'].dirty || formGroup.controls['fechaDeNacimiento'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['fechaDeNacimiento'].errors">
+                                    La fecha de nacimiento es obligatoria
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" placeholder="Celular"
+                                    formControlName="telefono">
+                                <label for="email">Celular</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['telefono'].invalid && (formGroup.controls['telefono'].dirty || formGroup.controls['telefono'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['telefono'].errors">
+                                    El celular es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Calle y número"
+                                    formControlName="calleYNumero" autocomplete="off">
+                                <label>Calle y número</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['calleYNumero'].invalid && (formGroup.controls['calleYNumero'].dirty || formGroup.controls['calleYNumero'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['calleYNumero'].errors">
+                                    La calle y número son obligatorios
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Referencias"
+                                    formControlName="referencias" autocomplete="off">
+                                <label>Referencias</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['referencias'].invalid && (formGroup.controls['referencias'].dirty || formGroup.controls['referencias'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['referencias'].errors">
+                                    La calle y número son obligatorios
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Código postal" maxlength="5"
+                                    formControlName="codigoPostal" autocomplete="off"
+                                    (keyup)="buscarCodigoPostal($event)">
+                                <label>Código postal</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select">
+                                    <ng-container *ngIf="codigosPostales.length > 1">
+                                        <option *ngFor="let codigoPostal of codigosPostales"
+                                            [value]="codigoPostal.asentamiento+ ''+ codigoPostal.tipoDeAsentamiento">
+                                            {{codigoPostal.asentamiento}} {{codigoPostal.tipoDeAsentamiento}}
+                                        </option>
+                                    </ng-container>
+                                    <ng-container *ngIf="codigosPostales.length == 1">
+                                        <option [value]="codigosPostales[0].asentamiento + ' ' + codigosPostales[0].tipoDeAsentamiento">
+                                            {{codigosPostales[0].tipoDeAsentamiento}} {{codigosPostales[0].asentamiento}}                                             
+                                        </option>
+                                    </ng-container>
+                                </select>
+                                <label>Colonia</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Alcaldia" formControlName="alcaldia">
+                                <label>Alcaldia</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

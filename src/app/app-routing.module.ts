@@ -6,14 +6,19 @@ import { LoginComponent } from './components/clientes/login/login.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cliente/detalle-del-cliente.component';
 import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/lista-de-pedidos.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
 
 const routes: Routes = [
   //{ path: "", component: ListaDePlatillosComponent }
-  { path: "", component: ListaDePlatillosComponent },
+  { path: "", component: HomeComponent },
+  { path: "acercaDe", component: AcercaDeComponent },
+  { path: "menu", component: ListaDePlatillosComponent},
   { path: "iniciarSesion", component: LoginComponent },
-  { path: "carrito", component: CarritoComponent },
-  { path: "cliente/detalles", component: DetalleDelClienteComponent },
-  { path: "cliente/pedidos", component: ListaDePedidosComponent },
+  
+  // { path: "carrito", component: CarritoComponent },
+  // { path: "cliente/detalles", component: DetalleDelClienteComponent },
+  // { path: "cliente/pedidos", component: ListaDePedidosComponent },
   { path: "cliente/registrar", component: AgregarClienteComponent },
 ];
 

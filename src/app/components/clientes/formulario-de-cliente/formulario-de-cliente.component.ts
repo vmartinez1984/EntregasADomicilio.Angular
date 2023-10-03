@@ -57,9 +57,9 @@ export class FormularioDeClienteComponent {
     console.log()
   }
 
-  guardar() {
-    //console.log(this.formGroup.value)
-    console.log(this.formGroup)
+  guardar() {    
+    console.log(this.formGroup.valid)
+    console.log("nombre", this.formGroup.controls['nombre'].invalid)
     if (this.formGroup.valid) {
       var cliente: ClienteDto = {
         nombre: this.formGroup.value.nombre,

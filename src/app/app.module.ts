@@ -3,14 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './templates/menu/menu.component';
+import { NavbarComponent } from './templates/navbar/navbar.component';
 import { ListaDePlatillosComponent } from './components/platillos/lista-de-platillos/lista-de-platillos.component';
 import { FormularioDeClienteComponent } from './components/clientes/formulario-de-cliente/formulario-de-cliente.component';
 import { AgregarClienteComponent } from './components/clientes/agregar-cliente/agregar-cliente.component';
 import { EditarClienteComponent } from './components/clientes/editar-cliente/editar-cliente.component';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MaterialModule } from './modules/material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/clientes/login/login.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
@@ -24,32 +23,37 @@ import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/li
 import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cliente/detalle-del-cliente.component';
 import { FormularioDePersonaComponent } from './components/clientes/formulario-de-persona/formulario-de-persona.component';
 import { FormularioDeDireccionComponent } from './components/clientes/formulario-de-direccion/formulario-de-direccion.component';
+import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
+import { ReservacionesComponent } from './pages/reservaciones/reservaciones.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    ListaDePlatillosComponent,
+    NavbarComponent,
+    //ListaDePlatillosComponent,
     FormularioDeClienteComponent,
     AgregarClienteComponent,
     EditarClienteComponent,
     LoginComponent,
-    CarritoComponent,
+    //CarritoComponent,
     FooterComponent,
     AutorizadoComponent,
-    AgregarPlatilloACarritoComponent,
+    //AgregarPlatilloACarritoComponent,
     DetalleDelUltimoPedidoComponent,
     ListaDePedidosComponent,
     DetalleDelClienteComponent,
     FormularioDePersonaComponent,
     FormularioDeDireccionComponent,
+    AcercaDeComponent,
+    ReservacionesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    MaterialModule,
+    BrowserAnimationsModule,    
     ReactiveFormsModule, FormsModule
   ],
   providers: [

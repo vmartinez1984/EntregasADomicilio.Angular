@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { CategoriaVentaDto } from 'src/app/interfaces/categoria-dto';
 import { PlatilloVentaDto } from 'src/app/interfaces/platillo-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
@@ -16,8 +15,7 @@ export class ListaDePlatillosComponent {
   categorias: CategoriaVentaDto[] = []
 
   constructor(
-    private servicio: RespositorioService,
-    public dialog: MatDialog
+    private servicio: RespositorioService    
   ) {
     this.servicio.categoria.obtenerTodos().subscribe({
       next: (categorias) => {
@@ -38,17 +36,7 @@ export class ListaDePlatillosComponent {
   }
 
   agregarACarrito(platillo: PlatilloVentaDto) {
-    this.dialog.open(
-      AgregarPlatilloACarritoComponent,
-      {
-        disableClose: true,
-        data: platillo,
-        width: "90%"
-      }).afterClosed().subscribe({
-        next: (data) => {
-          console.log(data)
-        }
-      })
+    
   }
 
 }

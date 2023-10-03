@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PlatilloVentaDto } from 'src/app/interfaces/platillo-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
 import { environment } from 'src/environments/environment.development';
@@ -12,12 +11,10 @@ import { environment } from 'src/environments/environment.development';
 export class AgregarPlatilloACarritoComponent {
   numero = 0
 
-  constructor(
-    private dialogRef: MatDialogRef<AgregarPlatilloACarritoComponent>,
-    @Inject(MAT_DIALOG_DATA) public platillo: PlatilloVentaDto,
+  constructor(    
     public servicio: RespositorioService
   ) {
-    console.log(this.platillo)
+    //console.log(this.platillo)
   }
 
   obtenerUrl(platilloId: number) {
@@ -37,6 +34,6 @@ export class AgregarPlatilloACarritoComponent {
   }
 
   cerrar(){
-    this.dialogRef.close()
+    
   }
 }
