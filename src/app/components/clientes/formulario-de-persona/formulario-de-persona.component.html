@@ -1,32 +1,104 @@
-<form>
-    <!-- <div class="row">
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Nombre</mat-label>
-                <input formControlName="nombre" matInput type="text" autocomplete="off" />
-                <mat-error>El campo Nombre es requerido</mat-error>
-            </mat-form-field>
-        </div>
-        <div class="col">
-            <mat-form-field appearance="outline">
-                <mat-label>Apellidos</mat-label>
-                <input formControlName="apellidos" matInput type="text" autocomplete="off" />
-                <mat-error>El campo Apellidos es requerido</mat-error>
-            </mat-form-field>
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row g-0">
+        <div class="col-md-12 bg-dark d-flex align-items-center">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal">Cliente</h5>
+                <!-- <h1 class="text-white mb-4">Anote sus datos</h1> -->
+
+                <form [formGroup]="formGroup" (submit)="guardar()">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre"
+                                    maxlength="50" autocomplete="off">
+                                <label>Nombre</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['nombre'].invalid && (formGroup.controls['nombre'].dirty || formGroup.controls['nombre'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['nombre'].errors">
+                                    El nombre es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" formControlName="apellidos"
+                                    placeholder="Apellidos" maxlength="140" autocomplete="off">
+                                <label for="name">Apellidos</label>
+                                <div *ngIf="formGroup.controls['apellidos'].invalid && (formGroup.controls['apellidos'].dirty || formGroup.controls['apellidos'].touched)"
+                                    class="alert">
+                                    <div *ngIf="formGroup.controls['apellidos'].errors">
+                                        Los apellidos son obligatorios
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" placeholder="Correo" formControlName="correo">
+                                <label>Correo</label>
+                                <div *ngIf="formGroup.controls['correo'].invalid && (formGroup.controls['correo'].dirty || formGroup.controls['correo'].touched)"
+                                    class="alert">
+                                    <div *ngIf="formGroup.controls['correo'].errors">
+                                        El correo es obligatorio
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" placeholder="Contraseña"
+                                    formControlName="contrasenia">
+                                <label for="email">Contraseña</label>
+                                <div *ngIf="formGroup.controls['contrasenia'].invalid && (formGroup.controls['contrasenia'].dirty || formGroup.controls['contrasenia'].touched)"
+                                    class="alert">
+                                    <div *ngIf="formGroup.controls['contrasenia'].errors">
+                                        El correo es obligatorio
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="date" class="form-control" placeholder="Fecha de nacimiento"
+                                    formControlName="fechaDeNacimiento">
+                                <label>Fecha de nacimiento</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['fechaDeNacimiento'].invalid && (formGroup.controls['fechaDeNacimiento'].dirty || formGroup.controls['fechaDeNacimiento'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['fechaDeNacimiento'].errors">
+                                    La fecha de nacimiento es obligatoria
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" placeholder="Celular"
+                                    formControlName="telefono">
+                                <label for="email">Celular</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['telefono'].invalid && (formGroup.controls['telefono'].dirty || formGroup.controls['telefono'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['telefono'].errors">
+                                    El celular es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="btn btn-secondary w-100 py-3" type="button" (click)="habilitarFormulario(true)">Editar</button>
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-primary w-100 py-3" type="submit" [disabled]="!botonGuardar">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
-    <mat-form-field>
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechaDeNacimiento">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Telefono</mat-label>
-        <input formControlName="telefono" matInput type="text" maxlength="10" autocomplete="off" />
-        <mat-error>El campo Telefono es requerido</mat-error>
-    </mat-form-field> -->
-</form>
+</div>

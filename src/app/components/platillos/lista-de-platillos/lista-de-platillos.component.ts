@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CategoriaVentaDto } from 'src/app/interfaces/categoria-dto';
 import { PlatilloVentaDto } from 'src/app/interfaces/platillo-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
+import { NavbarService } from 'src/app/templates/navbar/navbar.service';
 import { environment } from 'src/environments/environment.development';
-import { AgregarPlatilloACarritoComponent } from '../agregar-platillo-acarrito/agregar-platillo-acarrito.component';
 
 @Component({
   selector: 'app-lista-de-platillos',
@@ -15,7 +15,7 @@ export class ListaDePlatillosComponent {
   categorias: CategoriaVentaDto[] = []
 
   constructor(
-    private servicio: RespositorioService    
+    private servicio: RespositorioService
   ) {
     this.servicio.categoria.obtenerTodos().subscribe({
       next: (categorias) => {
@@ -25,7 +25,7 @@ export class ListaDePlatillosComponent {
     })
     this.servicio.platillo.obtenerTodos().subscribe({
       next: (platillos) => {
-        //console.log(platillos)
+        console.log(platillos)
         this.platillos = platillos
       }
     })
@@ -36,7 +36,16 @@ export class ListaDePlatillosComponent {
   }
 
   agregarACarrito(platillo: PlatilloVentaDto) {
-    
+
   }
 
+  obtenerPlatillosPorCategoria(categoriaId: number): PlatilloVentaDto[] {
+    var lista: PlatilloVentaDto[] = []
+    this.platillos.forEach(x => {
+      if (x.categoria.id == categoriaId)
+        lista.push(x)
+    })
+
+    return lista
+  }
 }

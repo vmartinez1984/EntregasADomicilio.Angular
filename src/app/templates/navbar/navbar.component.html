@@ -1,6 +1,6 @@
 <div class="container-xxl position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-        <a href="" class="navbar-brand p-0">
+        <a routerLink="" class="navbar-brand p-0">
             <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
             <!-- <img src="img/logo.png" alt="Logo"> -->
         </a>
@@ -8,36 +8,49 @@
             <span class="fa fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0 pe-4">
-                <!-- <a routerLink="" class="nav-item nav-link active">Home</a> -->
-                <a routerLink="" class="nav-item nav-link">Home</a>
-                <a routerLink="acercaDe" class="nav-item nav-link">About</a>
-                <a routerLink="iniciarSesion" class="nav-item nav-link">Iniciar sesión</a>
+            <div class="navbar-nav ms-auto py-0 pe-4">                
+                <a routerLink="" class="nav-item nav-link"
+                    [ngClass]="nabvarServicio.tag == 'inicio'? 'active':''">Inicio</a>
+                <a class="nav-item nav-link" routerLink="acercaDe" [ngClass]="nabvarServicio.tag == 'acercaDe'? 'active':''">
+                    Acerca de
+                </a>
                 <a [routerLink]="['menu']" class="nav-item nav-link">Menu</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="booking.html" class="dropdown-item">Booking</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+
+                <app-autorizado>
+                    <ng-container noAutorizado>
+                        <a routerLink="iniciarSesion" class="nav-item nav-link">Iniciar sesión</a>
+                    </ng-container>
+
+                    <ng-container autorizado>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle"
+                                data-bs-toggle="dropdown">{{servicio.sesion.obtenerCampo("Nombre")}}</a>
+                            <div class="dropdown-menu m-0">
+                                <a routerLink="" class="dropdown-item" (click)="servicio.sesion.cerrarSesion()">Cerrar
+                                    sesión</a>
+                                <a routerLink="/cliente/detalles" class="dropdown-item">Ver cuenta</a>
+                                <a routerLink="/cliente/pedidos" class="dropdown-item">Pedidos</a>
+                            </div>
+                        </div>
+                    </ng-container>
+                </app-autorizado>
+
+                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
-            <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
+            <!-- <a href="" class="btn btn-primary py-2 px-4">Book A Table</a> -->
         </div>
     </nav>
 
     <div class="container-xxl py-5 bg-dark hero-header mb-5">
         <div class="container text-center my-5 pt-5 pb-4">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Food Menu</h1>
-            <nav aria-label="breadcrumb">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">{{nabvarServicio.titulo}}</h1>
+            <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item text-white active" aria-current="page">Menu</li>
                 </ol>
-            </nav>
+            </nav> -->
         </div>
     </div>
 
@@ -56,6 +69,9 @@
         </div>
     </div> -->
 </div>
+
+
+
 <!-- <div class="mt-3">
     <button mat-button color="link" routerLink="/">
         <mat-icon>home</mat-icon>

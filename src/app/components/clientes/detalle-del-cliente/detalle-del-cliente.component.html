@@ -1,1 +1,8 @@
-<p>detalle-del-cliente works!</p>
+<app-formulario-de-persona [cliente]="cliente" (clienteEmitter)="guardarCliente($event)"/>
+
+<div *ngFor="let direccion of cliente?.direcciones">
+    <app-formulario-de-direccion [direccion]="direccion"/>
+    <div class="col-6">
+        <a class="btn btn-link w-100 py-3" routerLink="/cliente/direccion/agregar" >Agregar otra dirección para entrega</a>
+    </div>
+</div>

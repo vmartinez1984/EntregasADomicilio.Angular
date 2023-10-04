@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClienteDto } from 'src/app/interfaces/cliente-dto';
+import { ClienteDtoIn } from 'src/app/interfaces/cliente-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class AgregarClienteComponent {
 
   constructor(private service: RespositorioService){}
 
-  guardar(cliente: ClienteDto){    
+  guardar(cliente: ClienteDtoIn){    
     console.log(cliente)
     this.service.cliente.agregar(cliente).subscribe({
       next:(data)=>{

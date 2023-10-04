@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
@@ -26,20 +26,21 @@ import { FormularioDeDireccionComponent } from './components/clientes/formulario
 import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
 import { ReservacionesComponent } from './pages/reservaciones/reservaciones.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AgregarDireccionComponent } from './components/clientes/agregar-direccion/agregar-direccion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    //ListaDePlatillosComponent,
+    ListaDePlatillosComponent,
     FormularioDeClienteComponent,
     AgregarClienteComponent,
     EditarClienteComponent,
     LoginComponent,
-    //CarritoComponent,
+    CarritoComponent,
     FooterComponent,
     AutorizadoComponent,
-    //AgregarPlatilloACarritoComponent,
+    AgregarPlatilloACarritoComponent,
     DetalleDelUltimoPedidoComponent,
     ListaDePedidosComponent,
     DetalleDelClienteComponent,
@@ -48,13 +49,14 @@ import { HomeComponent } from './pages/home/home.component';
     AcercaDeComponent,
     ReservacionesComponent,
     HomeComponent,
+    AgregarDireccionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,    
-    ReactiveFormsModule, FormsModule
+    ReactiveFormsModule, FormsModule, CommonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

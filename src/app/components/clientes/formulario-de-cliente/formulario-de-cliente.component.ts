@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClienteDto } from 'src/app/interfaces/cliente-dto';
+import { ClienteDtoIn } from 'src/app/interfaces/cliente-dto';
 import { CodigoPostalDto } from 'src/app/interfaces/codigo-postal-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
 
@@ -14,7 +14,7 @@ export class FormularioDeClienteComponent {
   estaBuscandoCodigoPostal = false
   codigosPostales: CodigoPostalDto[] = []
 
-  @Output() clienteEmitter: EventEmitter<ClienteDto> = new EventEmitter<ClienteDto>()
+  @Output() clienteEmitter: EventEmitter<ClienteDtoIn> = new EventEmitter<ClienteDtoIn>()
 
   constructor(
     private formBuilder: FormBuilder,
@@ -61,7 +61,7 @@ export class FormularioDeClienteComponent {
     console.log(this.formGroup.valid)
     console.log("nombre", this.formGroup.controls['nombre'].invalid)
     if (this.formGroup.valid) {
-      var cliente: ClienteDto = {
+      var cliente: ClienteDtoIn = {
         nombre: this.formGroup.value.nombre,
         apellidos: this.formGroup.value.apellidos,
         telefono: this.formGroup.value.telefono,

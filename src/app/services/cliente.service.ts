@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { ClienteDto } from '../interfaces/cliente-dto';
+import { ClienteDto, ClienteDtoIn, ClienteUpdateDto } from '../interfaces/cliente-dto';
 import { Observable } from 'rxjs';
 import { InicioDesesionDto } from '../interfaces/inicio-desesion-dto';
 import { TokenDto } from '../interfaces/token-dto';
@@ -55,23 +55,26 @@ export class SesionService {
   cerrarSesion() {
     localStorage.removeItem(this.llaveExpiracion)
     localStorage.removeItem(this.llaveToken)
-  } 
+  }
 }
 
-export class ClienteService{
+export class ClienteService {
+  actualizarDatos(cliente: ClienteUpdateDto): Observable<any> {
+    return this.httpCliente.put(this.url, cliente)
+  }
   constructor(private httpCliente: HttpClient) { }
 
-  private url= environment.urlEntregasADomcilioApi + "Clientes/"
+  private url = environment.urlEntregasADomcilioApi + "Clientes/"
 
-  agregar(cliente: ClienteDto): Observable<any>{
+  agregar(cliente: ClienteDtoIn): Observable<any> {
     return this.httpCliente.post(this.url, cliente)
   }
 
-  iniciarSesion(inicioDeSesion: InicioDesesionDto):Observable<TokenDto> {
-    return this.httpCliente.post<TokenDto>(this.url + "InicioDesesion",inicioDeSesion)
+  iniciarSesion(inicioDeSesion: InicioDesesionDto): Observable<TokenDto> {
+    return this.httpCliente.post<TokenDto>(this.url + "InicioDesesion", inicioDeSesion)
   }
 
-  obtenerCliente(): Observable<any>{
-    return this.httpCliente.get(this.url)
+  obtenerCliente(): Observable<ClienteDto> {
+    return this.httpCliente.get<ClienteDto>(this.url)
   }
 }

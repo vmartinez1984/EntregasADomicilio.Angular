@@ -3,9 +3,9 @@ import { CategoriaService } from './categoria.service';
 import { HttpClient } from '@angular/common/http';
 import { PlatilloService } from './platillo.service';
 import { CodigoPostalService } from './codigo-postal.service';
-import { ClienteService, SesionService } from './cliente.service';
 import { CarritoService } from './carrito.service';
 import { PedidoService } from './pedido.service';
+import { ClienteService, SesionService } from './cliente.service';
 
 @Injectable({
   providedIn: 'root'

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InicioDesesionDto } from 'src/app/interfaces/inicio-desesion-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
+import { NavbarService } from 'src/app/templates/navbar/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,9 @@ export class LoginComponent {
 
   constructor(
     private servicio: RespositorioService,
-    private formBuild: FormBuilder,
-    //private snackbar: MatSnackBar,
-    private router: Router
-  ) {
+    private formBuild: FormBuilder,    
+    private router: Router    
+  ) {    
     this.formGroup = this.formBuild.group({
       correo: ['', { validators: [Validators.required, Validators.email] }],
       contrasenia: ['', { validators: [Validators.required] }]

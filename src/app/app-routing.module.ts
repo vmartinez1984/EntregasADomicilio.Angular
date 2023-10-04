@@ -8,18 +8,20 @@ import { DetalleDelClienteComponent } from './components/clientes/detalle-del-cl
 import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/lista-de-pedidos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
+import { AgregarDireccionComponent } from './components/clientes/agregar-direccion/agregar-direccion.component';
 
 const routes: Routes = [
   //{ path: "", component: ListaDePlatillosComponent }
-  { path: "", component: HomeComponent },
-  { path: "acercaDe", component: AcercaDeComponent },
-  { path: "menu", component: ListaDePlatillosComponent},
-  { path: "iniciarSesion", component: LoginComponent },
-  
+  { path: "", component: HomeComponent, data: { titulo: "Inicio", etiqueta:'inicio' } },
+  { path: "acercaDe", component: AcercaDeComponent, data: { titulo: "Acerca de nosotros", etiqueta:'acercaDe' } },
+  { path: "menu", component: ListaDePlatillosComponent, data: { titulo: "Ménu", etiqueta:'menu' } },
+  { path: "iniciarSesion", component: LoginComponent,  data: { titulo: "Inicio de sesión", etiqueta:'inicioDesesion' } },
+
   // { path: "carrito", component: CarritoComponent },
-  // { path: "cliente/detalles", component: DetalleDelClienteComponent },
+  { path: "cliente/detalles", component: DetalleDelClienteComponent, data: { titulo: "Detalles de la cuenta", etiqueta:'detalles' }},
+  { path: "cliente/direccion/agregar", component: AgregarDireccionComponent, data: { titulo: "Agregar dirección", etiqueta:'agregarDireccion' } },
   // { path: "cliente/pedidos", component: ListaDePedidosComponent },
-  { path: "cliente/registrar", component: AgregarClienteComponent },
+  { path: "cliente/registrar", component: AgregarClienteComponent, data: { titulo: "Registrar", etiqueta:'registrar' } },
 ];
 
 @NgModule({

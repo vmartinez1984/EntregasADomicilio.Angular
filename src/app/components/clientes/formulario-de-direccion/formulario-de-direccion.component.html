@@ -1,1 +1,88 @@
-<p>formulario-de-direccion works!</p>
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row g-0">
+        <div class="col-md-12 bg-dark d-flex align-items-center">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal">Dirección de entrega</h5>
+                <!-- <h1 class="text-white mb-4">Dirección de entrega</h1> -->
+
+                <form [formGroup]="formGroup" (submit)="guardar()">
+                    <div class="row g-3">                      
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Calle y número"
+                                    formControlName="calleYNumero" autocomplete="off">
+                                <label>Calle y número</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['calleYNumero'].invalid && (formGroup.controls['calleYNumero'].dirty || formGroup.controls['calleYNumero'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['calleYNumero'].errors">
+                                    La calle y número son obligatorios
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Referencias"
+                                    formControlName="referencias" autocomplete="off">
+                                <label>Referencias</label>
+                            </div>
+                            <div *ngIf="formGroup.controls['referencias'].invalid && (formGroup.controls['referencias'].dirty || formGroup.controls['referencias'].touched)"
+                                class="alert">
+                                <div *ngIf="formGroup.controls['referencias'].errors">
+                                    La calle y número son obligatorios
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Código postal" maxlength="5"
+                                    formControlName="codigoPostal" autocomplete="off"
+                                    (keyup)="buscarCodigoPostal($event)">
+                                <label>Código postal</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select">
+                                    <ng-container *ngIf="codigosPostales.length > 1">
+                                        <option *ngFor="let codigoPostal of codigosPostales"
+                                            [value]="codigoPostal.asentamiento+ ''+ codigoPostal.tipoDeAsentamiento">
+                                            {{codigoPostal.asentamiento}} {{codigoPostal.tipoDeAsentamiento}}
+                                        </option>
+                                    </ng-container>
+                                    <ng-container *ngIf="codigosPostales.length == 1">
+                                        <option [value]="codigosPostales[0].asentamiento + ' ' + codigosPostales[0].tipoDeAsentamiento">
+                                            {{codigosPostales[0].tipoDeAsentamiento}} {{codigosPostales[0].asentamiento}}                                             
+                                        </option>
+                                    </ng-container>
+                                </select>
+                                <label>Colonia</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Alcaldia" formControlName="alcaldia">
+                                <label>Alcaldia</label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-3">
+                            <button class="btn btn-secondary w-100 py-3" type="button">Editar</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Guardar</button>
+                        </div>
+
+                        <div class="col-6" *ngIf="direccion?.orden != 1">
+                            <button class="btn btn-primary w-100 py-3" type="button">Colocar como principal</button>
+                        </div>                        
+
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
