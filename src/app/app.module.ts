@@ -11,12 +11,12 @@ import { EditarClienteComponent } from './components/clientes/editar-cliente/edi
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LoginComponent } from './components/clientes/login/login.component';
+import { LoginComponent } from './sesion/components/login/login.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { InterceptorService } from './services/interceptor.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { AutorizadoComponent } from './components/seguridad/autorizado/autorizado.component';
+import { AutorizadoComponent } from './sesion/components/autorizado/autorizado.component';
 import { AgregarPlatilloACarritoComponent } from './components/platillos/agregar-platillo-acarrito/agregar-platillo-acarrito.component';
 import { DetalleDelUltimoPedidoComponent } from './components/Pedido/detalle-del-ultimo-pedido/detalle-del-ultimo-pedido.component';
 import { ListaDePedidosComponent } from './components/Pedido/lista-de-pedidos/lista-de-pedidos.component';
@@ -27,6 +27,8 @@ import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
 import { ReservacionesComponent } from './pages/reservaciones/reservaciones.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AgregarDireccionComponent } from './components/clientes/agregar-direccion/agregar-direccion.component';
+import { OlvidoDeContraseniaComponent } from './sesion/components/olvido-de-contrasenia/olvido-de-contrasenia.component';
+import { CambiarContraseniaComponent } from './sesion/components/cambiar-contrasenia/cambiar-contrasenia.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { AgregarDireccionComponent } from './components/clientes/agregar-direcci
     ReservacionesComponent,
     HomeComponent,
     AgregarDireccionComponent,
+    OlvidoDeContraseniaComponent,
+    CambiarContraseniaComponent,
   ],
   imports: [
     BrowserModule,

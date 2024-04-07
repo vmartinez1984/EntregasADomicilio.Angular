@@ -13,8 +13,10 @@ export class PedidoService {
   realizarPedido(nota: string, platillos: PlatilloVentaDto[]): Observable<any> {
     var pedido: PedidoVentaDtoIn = {
       comentario: nota,
-      listaDetalleDelPedido: this.obtenerListaDetalleDelPedido(platillos)
+      platillos: this.obtenerListaDetalleDelPedido(platillos)           
     }
+    console.log(pedido)
+
     return this.httpClient.post(this.url, pedido);
   }
 
@@ -22,7 +24,7 @@ export class PedidoService {
     var detallesDelPedido: PlatilloPedidoDto[] = []
 
     platillos.forEach(platillo => {
-      detallesDelPedido.push({ platilloId: platillo.id, precio: platillo.precio })
+      detallesDelPedido.push({ id: platillo.id, precio: platillo.precio })
     })
     return detallesDelPedido;
   }

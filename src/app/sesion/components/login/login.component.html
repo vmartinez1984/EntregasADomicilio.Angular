@@ -21,8 +21,8 @@
                                 <input type="email" class="form-control" placeholder="Tu correo"
                                     formControlName="correo">
                                 <label for="email">Tu correo</label>
-                                <div
-                                    *ngIf="formGroup.controls['correo'].invalid && (formGroup.controls['correo'].dirty || formGroup.controls['correo'].touched)" class="danger">
+                                <div *ngIf="formGroup.controls['correo'].invalid && (formGroup.controls['correo'].dirty || formGroup.controls['correo'].touched)"
+                                    class="danger">
                                     El correo es requerido</div>
                             </div>
                         </div>
@@ -31,18 +31,28 @@
                                 <input type="password" class="form-control" id="name" placeholder="Tu contraseña"
                                     formControlName="contrasenia">
                                 <label for="name">Tu contraseña</label>
-                                <div
-                                    *ngIf="formGroup.controls['contrasenia'].invalid && (formGroup.controls['contrasenia'].dirty || formGroup.controls['contrasenia'].touched)" class="danger">
+                                <div *ngIf="formGroup.controls['contrasenia'].invalid && (formGroup.controls['contrasenia'].dirty || formGroup.controls['contrasenia'].touched)"
+                                    class="danger">
                                     La contraseña es requerido
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Iniciar sesión</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit" [disabled]="estaCargando">
+                                <span *ngIf="!estaCargando">
+                                    Iniciar sesión
+                                </span>
+                                <div *ngIf="estaCargando">
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    Un momento...
+                                </div>
+                            </button>
                         </div>
                         <div class="col-12 text-center">
                             <a class="btn btn-link" routerLink="/cliente/registrar">Registrarse</a>
-                            <a class="btn btn-link" href="">¿Olvido su contraseña?</a>
+                            <a class="btn btn-link" routerLink="/olvidoSuContrasenia">¿Olvido su contraseña?</a>
                         </div>
                     </div>
                 </form>

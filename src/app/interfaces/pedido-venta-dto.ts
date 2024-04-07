@@ -1,12 +1,13 @@
 import { PlatilloVentaDto } from "./platillo-dto"
 
 export interface PedidoVentaDtoIn {
+    //id: string
     comentario: string
-    listaDetalleDelPedido: PlatilloPedidoDto[]
+    platillos: PlatilloPedidoDto[]
 }
 
 export interface PlatilloPedidoDto{
-    platilloId: number
+    id: number
     precio: number
 }
 

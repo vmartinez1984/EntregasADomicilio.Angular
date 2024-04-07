@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RespositorioService } from 'src/app/services/respositorio.service';
+import { SesionService } from '../../services/sesion.service';
 
 @Component({
   selector: 'app-autorizado',
@@ -8,9 +9,9 @@ import { RespositorioService } from 'src/app/services/respositorio.service';
 })
 export class AutorizadoComponent {
 
-  constructor(private seguridad: RespositorioService){}
+  constructor(private sesion: SesionService){}
 
   estaAutorizado (): boolean{
-    return this.seguridad.sesion.estaLogueado()
+    return this.sesion.estaLogueado()
   }
 }

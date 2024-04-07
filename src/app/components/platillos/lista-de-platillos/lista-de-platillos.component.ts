@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CategoriaVentaDto } from 'src/app/interfaces/categoria-dto';
 import { PlatilloVentaDto } from 'src/app/interfaces/platillo-dto';
 import { RespositorioService } from 'src/app/services/respositorio.service';
-import { NavbarService } from 'src/app/templates/navbar/navbar.service';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -13,13 +12,14 @@ import { environment } from 'src/environments/environment.development';
 export class ListaDePlatillosComponent {
   platillos: PlatilloVentaDto[] = []
   categorias: CategoriaVentaDto[] = []
+  platillo?: PlatilloVentaDto
 
   constructor(
     private servicio: RespositorioService
   ) {
     this.servicio.categoria.obtenerTodos().subscribe({
       next: (categorias) => {
-        //console.log(data)
+        console.log(categorias)
         this.categorias = categorias
       }
     })
@@ -35,17 +35,24 @@ export class ListaDePlatillosComponent {
     return environment.urlEntregasADomcilioApi + "Platillos/" + platilloId + "/Imagen"
   }
 
-  agregarACarrito(platillo: PlatilloVentaDto) {
-
+  mostarPlatillo(platillo: PlatilloVentaDto) {
+    this.platillo = platillo
   }
 
-  obtenerPlatillosPorCategoria(categoriaId: number): PlatilloVentaDto[] {
+  obtenerPlatillosPorCategoria(categoriaId: string): PlatilloVentaDto[] {
+    //console.log(categoriaId)
     var lista: PlatilloVentaDto[] = []
     this.platillos.forEach(x => {
-      if (x.categoria.id == categoriaId)
+      if (x.categoria == categoriaId)
         lista.push(x)
     })
+    //console.log(lista)
 
     return lista
+  }
+
+  cerrarElModal(data: any) {
+    console.log(data)
+    document.getElementById("botonCerrarDelModal")?.click()
   }
 }

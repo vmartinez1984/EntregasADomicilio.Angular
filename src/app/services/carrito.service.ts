@@ -70,6 +70,7 @@ export class CarritoService {
     var stringJson = localStorage.getItem(this.llave)
     if (stringJson != null)
       this.platillos = JSON.parse(stringJson)
+    //console.log(this.platillos)
   }
 
 }

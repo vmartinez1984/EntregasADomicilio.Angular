@@ -26,6 +26,8 @@ export class CarritoComponent {
         console.log(data)        
         this.router.navigate([''])
         this.servicio.carrito.vaciarCarrito()
+      },error:(error)=>{
+        console.log(error)
       }
     })
   }
